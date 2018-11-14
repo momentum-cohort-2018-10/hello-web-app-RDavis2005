@@ -1,10 +1,12 @@
 {% extends 'base.html' %} <!--applies base.html template-->
-{% load humanize %} <!--loads humanize directory-->
+<!--loads directory-->
 {% block title %} <!--makes reusable HTML pieces-->
     Homepage - {{ block.super }}
 {% endblock title %}
 
 {% block content %} <!--makes reusable HTML pieces-->
-    <h1>Hello World!</h1>
-    <p>This is my name {{ thing|truncatewords:1 }}</p>
+    {% for thing in things %} <!--loop that'll iterate over all the objects in the things variable, displaying the name for each Thing-->
+    <h2>{{ thing.name }}</h2> <!--prints out the variable of name-->
+    <p>{{ thing.description }}</p> <!--prints out the variable of description-->
+    {% endfor %}
 {% endblock content %}

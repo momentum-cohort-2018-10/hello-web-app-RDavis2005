@@ -1,10 +1,9 @@
 from django.shortcuts import render
+from collection.models import Thing #Tells the view we need information from the model
 
 # Create your views here.
 def index(request):
-    number = 6
-    thing = "Thing name"
-    return render(request, 'index.html', {
-        'number': number,
-        'thing': thing,
+    things = Thing.objects.all() 
+    return render(request, 'index.html', { #When index page is viewed, find all things in the database, display the template and pass those things along to that template
+        'things': things,
     })
