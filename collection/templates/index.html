@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!--applies base.html template-->
 {% load humanize %} <!--loads humanize directory-->
-{% block title %}
+{% block title %} <!--makes reusable HTML pieces-->
     Homepage - {{ block.super }}
 {% endblock title %}
 
-{% block content %}
+{% block content %} <!--makes reusable HTML pieces-->
     <h1>Hello World!</h1>
     <p>This is my name {{ thing|truncatewords:1 }}</p>
 {% endblock content %}
