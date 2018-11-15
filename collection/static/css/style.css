@@ -1,3 +1,10 @@
 body {
-    background-color: cornflowerblue;
+    text-align: center;
+    color: white;
+    font-family: cursive;
+    background-color: black;
+}
+
+nav ul {
+    display: inline-block;
 }
