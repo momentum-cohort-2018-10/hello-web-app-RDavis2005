@@ -1,5 +1,4 @@
 """hellowebapp URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
 Examples:
@@ -26,7 +25,9 @@ urlpatterns = [
     path('contact/', #when user requests Contact page
         TemplateView.as_view(template_name='contact.html'),
         name='contact'),
-    path('things/<slug>/', views.thing_detail, 
-        name='thing_detail'),
+    path('jerseys/<slug>/', views.jersey_detail, 
+        name='jersey_detail'),
+    path('jerseys/<slug>/edit/',
+        views.edit_jersey, name='edit_jersey'),
     path('admin/', admin.site.urls), 
 ]

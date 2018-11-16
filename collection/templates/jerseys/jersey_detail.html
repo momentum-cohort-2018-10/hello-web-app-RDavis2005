@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+{% block title %}
+    {{ jersey.name }} - {{ block.super }} 
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ jersey.name }}</h1> 
+    <p>{{ jersey.description }}</p>
+    <a href="{% url 'edit_jersey' slug=jersey.slug %}">
+        Edit me!
+    </a>
+{% endblock content %}

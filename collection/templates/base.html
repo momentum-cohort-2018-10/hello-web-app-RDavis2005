@@ -4,7 +4,7 @@
 <head>
     <title>
         {% block title %}
-            My Hello Web App Project
+            My Jersey Web App Project
         {% endblock title %}
     </title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -12,9 +12,6 @@
 </head>
 <body>
     <header>
-        <img src="{% static "image/image.jpg" %}" height=300 width=300/>
-        <audio src="{% static "/music/thememusic.mp3" %}" conntrols></audio>
-        <h1>My Django is F.U.N. App</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
@@ -22,6 +19,8 @@
                 <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
+        <img src="{% static "image/jerseys.jpg" %}" height=400 width=600/>
+        <h1>My Jersey Web App</h1>
     </header>
     {% block content %}{% endblock content %}
     {% block footer %}{% endblock footer %}
