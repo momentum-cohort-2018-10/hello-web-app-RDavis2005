@@ -16,9 +16,12 @@ from django.urls import path, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from collection import views
+from collection.backends import MyRegistrationView
 from django.contrib.auth.views import ( 
-	PasswordResetView, PasswordResetDoneView, 
-	PasswordResetConfirmView, PasswordResetCompleteView, 
+	PasswordResetView, 
+    PasswordResetDoneView, 
+	PasswordResetConfirmView, 
+    PasswordResetCompleteView, 
 )
 
 urlpatterns = [
@@ -33,18 +36,21 @@ urlpatterns = [
         name='jersey_detail'),
     path('jerseys/<slug>/edit/', views.edit_jersey, 
         name='edit_jersey'),
-    path('accounts/password/reset/', 
-        PasswordResetView.as_view(template_name='registration/password_reset_form.html'), 
+    path('accounts/password/reset/', PasswordResetView.as_view(
+        template_name='registration/password_reset_form.html'), 
         name="password_reset"),
-	path('accounts/password/reset/done/', 
-        PasswordResetView.as_view(template_name='registration/password_reset_done.html'), 
+    path('accounts/password/reset/done/', PasswordResetDoneView.as_view(
+        template_name='registration/password_reset_done.html'), 
         name="password_reset_done"),
-	path('accounts/password/reset/<uidb64>/<token>/', 
-        PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), 
+    path('accounts/password/reset/<uidb64>/<token>/',
+        PasswordResetConfirmView.as_view(
+        template_name='registration/password_reset_confirm.html'), 
         name="password_reset_confirm"),
-	path('accounts/password/done/', 
-        PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
+    path('accounts/password/done/', PasswordResetCompleteView.as_view(
+        template_name='registration/password_reset_complete.html'),
         name="password_reset_complete"),
-	path('accounts/', include('registration.backends.simple.urls')),
 	path('admin/', admin.site.urls), 
+    path('accounts/register/', MyRegistrationView.as_view(), name='registration_register'),
+    path('accounts/create_jersey/', views.create_jersey, name='registration_create_jersey'),
+    path('accounts/', include('registration.backends.simple.urls')),
 ]

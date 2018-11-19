@@ -4,10 +4,12 @@
 {% endblock title %}
 
 {% block content %}
+    <center>
     <h1>Edit "{{ jersey.name }}"</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
+    </center>
 {% endblock %}

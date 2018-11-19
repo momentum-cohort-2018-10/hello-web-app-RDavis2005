@@ -9,10 +9,12 @@
 {% block content %} 
     <!--loop that'll iterate over all the objects in the jerseys variable, displaying the name for each Jersey-->
     {% for jersey in jerseys %} 
+        <center>
         <h2><a href="{% url 'jersey_detail' slug=jersey.slug %}">
             {{ jersey.name }}
         <a/></h2>
+        </center>
         <!--prints out the variable of description-->
-        <p>{{ jersey.description }}</p> 
+        <center><p>{{ jersey.description }}</p></center>
     {% endfor %}
 {% endblock content %}

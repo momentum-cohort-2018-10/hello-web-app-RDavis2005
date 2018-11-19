@@ -3,7 +3,7 @@
     Registration Form - {{ block.super }}
 {% endblock title %}
 {% block content %}
-    <h1>Registration Form</h1>
+    <h1><center>Registration Form</center></h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p}}

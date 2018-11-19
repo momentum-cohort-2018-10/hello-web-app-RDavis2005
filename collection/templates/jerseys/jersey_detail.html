@@ -4,9 +4,15 @@
 {% endblock title %}
 
 {% block content %}
+    <center>
     <h1>{{ jersey.name }}</h1> 
     <p>{{ jersey.description }}</p>
-    <a href="{% url 'edit_jersey' slug=jersey.slug %}">
-        Edit me!
-    </a>
+    </center>
+    {% if user == jersey.user %}
+        <center><p>
+            <a href="{% url 'edit_jersey' slug=jersey.slug %}">
+                Edit Me
+            </a>
+        </p></center>
+        {% endif %}
 {% endblock content %}
