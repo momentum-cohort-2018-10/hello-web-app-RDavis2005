@@ -14,7 +14,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 from collection import views
 from collection.backends import MyRegistrationView
 from django.contrib.auth.views import ( 
@@ -32,10 +32,18 @@ urlpatterns = [
     path('contact/', #when user requests Contact page
         TemplateView.as_view(template_name='contact.html'),
         name='contact'),
+    path('jerseys/', RedirectView.as_view(
+        pattern_name='browse', permanent=True)),
     path('jerseys/<slug>/', views.jersey_detail, 
         name='jersey_detail'),
     path('jerseys/<slug>/edit/', views.edit_jersey, 
         name='edit_jersey'),
+    path('browse/', RedirectView.as_view(
+        pattern_name='browse', permanent=True)),
+    path('browse/name/', views.browse_by_name, 
+        name='browse'),
+    path('browse/name/<initial>/', views.browse_by_name,
+        name='browse_by_name'),
     path('accounts/password/reset/', PasswordResetView.as_view(
         template_name='registration/password_reset_form.html'), 
         name="password_reset"),

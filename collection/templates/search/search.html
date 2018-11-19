@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Browse - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <center>
+    <h1>
+        Browse Jerseys{% if initial %} Starting with
+        '{{ initial|title }}'{% endif %}
+    </h1>
+
+    {% for letter in 'abcdefghijklmnopqrstuvwxyz' %}
+    <a href="{% url 'browse_by_name' initial=letter %}"
+        {% if initial == letter %}class="active"{% endif%}>
+        {{ letter|upper }}
+    </a>
+    {% endfor %}
+    
+    <ul>
+        {% for jersey in jerseys %}
+        <li><a href="{% url 'jersey_detail' slug=jersey.slug %}">
+            {{ jersey.name }}
+        </a></li>
+        {% empty %}
+        <li>Sorry, no results!</li>
+        {% endfor %}
+    </ul>
+    </center>
+{% endblock content %}

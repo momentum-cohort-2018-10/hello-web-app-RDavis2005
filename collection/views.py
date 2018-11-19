@@ -60,3 +60,14 @@ def create_jersey(request):
     return render(request, 'jerseys/create_jersey.html', { 
         'form': form,
 })
+
+def browse_by_name(request, initial=None):
+    if initial:
+        jerseys = Jersey.objects.filter(
+            name__istartswith=initial).order_by('name')
+    else:
+        jerseys = Jersey.objects.all().order_by('name')
+    return render(request, 'search/search.html', {
+        'jerseys': jerseys,
+        'initial': initial,
+    })
